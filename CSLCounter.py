@@ -8,6 +8,9 @@ def totalComplaints():
             continue
         # Open the workbook
         workbook = xlrd.open_workbook(file)
+        
+        # Print the workbook name
+        print file  + ":"
 
         # Open the first sheet
         worksheet = workbook.sheet_by_index(0)
@@ -39,6 +42,7 @@ def totalComplaints():
         # Once the entire workbook has been searched, print out the values of the facebook comments and website comments
         print "Facebook Complaints: {}".format(facebookComments)
         print "Website Complaints: {}".format(websiteComments)
+        print ""
     
     
     
@@ -49,6 +53,9 @@ def lateNightComplaints():
         # Open the workbook
         workbook = xlrd.open_workbook(file)
 
+        # Print the workbook name
+        print file
+        
         # Open the first sheet
         worksheet = workbook.sheet_by_index(0)
 
