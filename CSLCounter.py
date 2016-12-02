@@ -4,13 +4,17 @@ import xlrd, os
 
 def totalComplaints():
     for file in os.listdir('.'):
-        if not file.endswith(".xls"):
+        if not (file.endswith(".xls") or file.endswith("xlsx")):
             continue
         # Open the workbook
         workbook = xlrd.open_workbook(file)
         
         # Print the workbook name
         print file  + ":"
+        
+        if('mydtxt' in file.lower()):
+            myDtxtCounter(workbook)
+            continue
 
         # Open the first sheet
         worksheet = workbook.sheet_by_index(0)
@@ -103,7 +107,15 @@ def lateNightComplaints():
         print "Facebook Complaints: {}".format(facebookComments)
         print "Website Complaints: {}".format(websiteComments)
 
-        
+def myDtxtCounter(workbook):
+    # Open the first sheet
+        worksheet = workbook.sheet_by_index(0)
+
+        # Once the entire workbook has been searched, print out the values of the facebook comments and website comments
+        print "myDtxt Complaints: {}".format(worksheet.nrows - 2)
+        print ""
+    
+    
 def main():
     totalComplaints()
 
